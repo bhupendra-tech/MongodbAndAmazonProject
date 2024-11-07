@@ -23,7 +23,9 @@ function dashboardSidePage() {
           />
         </form>
         <DragDropZone />
-        <Button size="small">Create</Button>
+        <Button size="small" type="primary">
+          Create
+        </Button>
       </div>
     </div>
   );
