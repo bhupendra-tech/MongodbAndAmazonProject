@@ -14,11 +14,13 @@ import {
   FormatAlignRightIcon,
   FormatAlignJustifyIcon,
 } from "../../assets/icons";
-
+import { useState } from "react";
+import { fontSizeList } from "./editorUtils";
+import { AngleDownIcon } from "../../assets/icons";
 function Toolbar({ editor }) {
   return (
-    <div className="flex bg-300 py-2 px-4 gap-2 rounded-md mb-4">
-      <div className="flex gap-1 border-2 border-200 p-1">
+    <div className="flex gap-3 rounded-md mb-4 ">
+      <div className="flex gap-3 border-2 border-200 p-1 select-none">
         <MarkButton editor={editor} format="bold" icon={<FormatBoldIcon />} />
         <MarkButton
           editor={editor}
@@ -40,6 +42,7 @@ function Toolbar({ editor }) {
           format="subScript"
           icon={<FormatSubScriptIcon />}
         />
+        <TextSizeButton editor={editor} />
       </div>
       <BlockButton editor={editor} format={"code"} icon={<FormatCodeIcon />} />
       <BlockButton
@@ -57,7 +60,7 @@ function Toolbar({ editor }) {
         format={"bulletedList"}
         icon={<FormatBulletedListIcon />}
       />
-      <div className="border-2 border-200 flex gap-1">
+      <div className="border-2 border-200 flex gap-2">
         <button
           onMouseDown={(event) => {
             event.preventDefault();
@@ -109,14 +112,62 @@ const MarkButton = ({ editor, format, icon }) => {
   );
 };
 const BlockButton = ({ editor, format, icon }) => {
+  console.log(CustomEditor.isBlockActive({ editor, format }));
   return (
     <button
       onMouseDown={(event) => {
         event.preventDefault();
         CustomEditor.toggleBlock({ editor, format });
       }}
+      className={`${
+        CustomEditor.isBlockActive({ editor, format }) ? "bg-200" : "bg-500"
+      }`}
     >
       {icon}
     </button>
+  );
+};
+
+const TextSizeButton = ({ editor }) => {
+  const [selectedItem, setSelectedItem] = useState(0);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  return (
+    <div className="bg-200 rounded-md w-36">
+      <div
+        className="flex gap-2 justify-between cursor-pointer px-2 w-full items-center"
+        onClick={() => {
+          setIsMenuVisible(!isMenuVisible);
+        }}
+      >
+        <div className="flex gap-2 cursor-pointer">
+          <div className="font-bold">{fontSizeList?.[selectedItem]?.icon}</div>
+          <div>{fontSizeList?.[selectedItem]?.name}</div>
+        </div>
+        <AngleDownIcon />
+      </div>
+      {isMenuVisible && (
+        <div className="absolute rounded-md mt-1 bg-100 w-36 z-10">
+          {fontSizeList.map((item, index) => {
+            const { icon, name } = item;
+            return (
+              <div
+                key={`${index}-toolbar-fontSize-element`}
+                className={`${
+                  selectedItem === index ? "bg-200" : ""
+                } flex gap-2 align-baseline cursor-pointer px-2 `}
+                onClick={() => {
+                  setSelectedItem(index);
+                  setIsMenuVisible(false);
+                  CustomEditor.toggleBlock({ editor, format: name });
+                }}
+              >
+                <div className="font-bold">{icon}</div>
+                <div>{name}</div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 };

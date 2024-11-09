@@ -11,6 +11,9 @@ import FormatAlignLeftIcon from "./formatAlignLeftIcon";
 import FormatAlignCenterIcon from "./formatAlignCenterIcon";
 import FormatAlignRightIcon from "./formatAlignRightIcon";
 import FormatAlignJustifyIcon from "./formatAlignJustifyIcon";
+import AngleDownIcon from "./angleDownIcon";
+import AngleUpIcon from "./angleUpIcon";
+import BookOpenIcon from "./bookOpenIcon";
 export {
   FormatBoldIcon,
   FormatItalicIcon,
@@ -25,4 +28,7 @@ export {
   FormatAlignCenterIcon,
   FormatAlignRightIcon,
   FormatAlignJustifyIcon,
+  AngleDownIcon,
+  AngleUpIcon,
+  BookOpenIcon,
 };

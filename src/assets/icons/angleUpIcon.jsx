@@ -1,7 +1,7 @@
-function AngleUpIcon({ width, height }) {
+function AngleUpIcon({ width = "16px", height = "16px" }) {
   return (
     <svg
-    className="text-500"
+      className="text-500"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       width={width}

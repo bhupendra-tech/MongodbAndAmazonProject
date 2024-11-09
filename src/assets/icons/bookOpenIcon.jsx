@@ -1,4 +1,4 @@
-function BookOpenIcon({ height, width, className }) {
+function BookOpenIcon({ width = "16px", height = "16px", className }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

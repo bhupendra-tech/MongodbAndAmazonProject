@@ -19,12 +19,64 @@ const BlockQuoteElement = (props) => {
   );
 };
 const NumberedListElement = (props) => {
-  console.log("2121212");
   return <ul {...props.attributes}>{props.children}</ul>;
+};
+const H1Element = (props) => {
+  return (
+    <h1 className="text-6xl" {...props.attributes}>
+      {props.children}
+    </h1>
+  );
+};
+const H2Element = (props) => {
+  return (
+    <h1 className="text-5xl" {...props.attributes}>
+      {props.children}
+    </h1>
+  );
+};
+const H3Element = (props) => {
+  return (
+    <h1 className="text-4xl" {...props.attributes}>
+      {props.children}
+    </h1>
+  );
+};
+const H4Element = (props) => {
+  return (
+    <h1 className="text-3xl" {...props.attributes}>
+      {props.children}
+    </h1>
+  );
+};
+const H5Element = (props) => {
+  return (
+    <h1 className="text-2xl" {...props.attributes}>
+      {props.children}
+    </h1>
+  );
+};
+const H6Element = (props) => {
+  return (
+    <h1 className="text-xl" {...props.attributes}>
+      {props.children}
+    </h1>
+  );
+};
+const CaptionElement = (props) => {
+  return (
+    <h1 className="text-xs" {...props.attributes}>
+      {props.children}
+    </h1>
+  );
 };
 
 const DefaultElement = (props) => {
-  return <p {...props.attributes}>{props.children}</p>;
+  return (
+    <p {...props.attributes} className="text-base">
+      {props.children}
+    </p>
+  );
 };
 
 const renderEditorElement = (props) => {
@@ -35,6 +87,22 @@ const renderEditorElement = (props) => {
       return <BlockQuoteElement {...props} />;
     case "numberedList":
       return <NumberedListElement {...props} />;
+    case "numberedList":
+      return <NumberedListElement {...props} />;
+    case "Heading 1":
+      return <H1Element {...props} />;
+    case "Heading 2":
+      return <H2Element {...props} />;
+    case "Heading 3":
+      return <H3Element {...props} />;
+    case "Heading 4":
+      return <H4Element {...props} />;
+    case "Heading 5":
+      return <H5Element {...props} />;
+    case "Heading 6":
+      return <H6Element {...props} />;
+    case "caption":
+      return <CaptionElement {...props} />;
     default:
       return <DefaultElement {...props} />;
   }
