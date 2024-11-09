@@ -3,7 +3,7 @@ import Button from "../components/button";
 
 function dashboardSidePage() {
   return (
-    <div className="mt-6 ml-6 ">
+    <div className="pt-6 pl-6">
       <h1 className="text-4xl font-semibold">Want to learn something ?</h1>
       <h3 className="text-2xl font-semibold mt-6">Create a new subject</h3>
       <div className="bg-100 px-6 py-10 rounded-xl mt-4 max-w-96 flex flex-col gap-4">
